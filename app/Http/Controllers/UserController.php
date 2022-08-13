@@ -43,7 +43,7 @@ class UserController extends Controller
         $data['nombres'] = $request['nombres'];
         $data['apellidos'] = $request['apellidos'];
         $data['tipoDeIdentificacion'] = $request['tipoDeIdentificacion'];
-        $data['NumDeIdentificacion'] = $request['NumDeIdentificacion'];
+        $data['numDeIdentificacion'] = $request['numDeIdentificacion'];
         $data['fechaDeNacimiento'] = $request['fechaDeNacimiento'];
         $data['contrasenna'] = $request['contrasenna'];
         $user_existe = User::where('usuario',$request->usuario)->where('id','!=',$request->id)->first();
