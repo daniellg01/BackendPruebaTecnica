@@ -46,7 +46,7 @@ class UserController extends Controller
         $data['NumDeIdentificacion'] = $request['NumDeIdentificacion'];
         $data['fechaDeNacimiento'] = $request['fechaDeNacimiento'];
         $data['contrasenna'] = $request['contrasenna'];
-        $user_existe = User::where('usuario',$request->usuario)->first();
+        $user_existe = User::where('usuario',$request->usuario)->where('id','!=',$request->id)->first();
         if($user_existe){
             return response()->json(['error' => 'existe'], 422);
         }
