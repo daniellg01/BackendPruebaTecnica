@@ -14,5 +14,4 @@ Route::prefix('user')->group(function () {
 
 Route::group(['middleware' => 'api'], function($router) {
     Route::post('login', [JWTController::class, 'login']);
-    Route::post('/logout', [JWTController::class, 'logout']);
 });
