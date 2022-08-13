@@ -14,6 +14,10 @@ class UserController extends Controller
 
     public function create(Request $request){
         $user= new User();
+        $user_existe = User::where('usuario',$request->usuario)->first();
+        if($user_existe){
+            return response()->json(['error' => 'existe'], 422);
+        }
         $user->create($request->all());
         return response()->json([
             'message' => "Successfully created",
@@ -42,7 +46,12 @@ class UserController extends Controller
         $data['NumDeIdentificacion'] = $request['NumDeIdentificacion'];
         $data['fechaDeNacimiento'] = $request['fechaDeNacimiento'];
         $data['contrasenna'] = $request['contrasenna'];
-    User::find($id)->update($data);
+        $user_existe = User::where('usuario',$request->usuario)->first();
+        if($user_existe){
+            return response()->json(['error' => 'existe'], 422);
+        }
+        User::find($id)->update($data);
+
       return response()->json([
           'message' => "Successfully updated",
           'success' => true
